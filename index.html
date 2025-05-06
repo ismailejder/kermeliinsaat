@@ -89,7 +89,7 @@
         header {
             background: var(--dark-color);
             color: var(--white-color);
-            padding: 15px 0;
+            padding: 15px 0; /* Masaüstü padding */
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -100,7 +100,7 @@
              display: flex;
              justify-content: space-between;
              align-items: center;
-             flex-wrap: wrap;
+             /* flex-wrap kaldırıldı, mobil için ayrı ayar yapılacak */
         }
 
         header h1 {
@@ -112,22 +112,23 @@
         }
 
         header nav {
-             margin-top: 0; /* Masaüstünde üst boşluk olmasın */
+             margin-top: 0;
+             flex-grow: 1;
+             text-align: right;
         }
 
         header nav ul {
             padding: 0;
             list-style: none;
             margin: 0;
-             display: flex;
-             flex-wrap: wrap;
-             justify-content: center;
+             display: flex; /* Yan yana sıralama */
+             justify-content: flex-end; /* Menüyü sağa hizala */
         }
 
         header nav li {
             display: inline-block;
             margin-left: 20px;
-             margin-top: 0; /* Masaüstünde üst boşluk olmasın */
+             margin-top: 0;
         }
 
         header nav a {
@@ -145,6 +146,22 @@
             color: var(--primary-color);
             border-bottom-color: var(--primary-color);
         }
+
+        /* Hamburger Menü Butonu Stilleri (Başlangıçta Gizli) */
+        .menu-toggle {
+            display: none; /* Varsayılan olarak gizli */
+            background: none;
+            border: none;
+            color: var(--white-color);
+            font-size: 1.8em;
+            cursor: pointer;
+            padding: 10px;
+             transition: color 0.3s ease;
+        }
+         .menu-toggle:hover {
+             color: var(--primary-color);
+         }
+
 
         /* Hero Bölümü */
         #hero {
@@ -218,8 +235,9 @@
         section:before { /* Sticky header için offset */
             content: "";
             display: block;
-            height: 90px; /* header yüksekliğine yakın */
-            margin-top: -90px;
+            /* height ve margin-top medya sorgularında ayarlanacak */
+            height: 90px; /* Varsayılan (masaüstü) */
+            margin-top: -90px; /* Varsayılan (masaüstü) */
             visibility: hidden;
         }
 
@@ -354,7 +372,7 @@
              margin-top: 40px;
              display: grid;
              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-             gap: 50px; /* Oklar için daha geniş boşluk */
+             gap: 50px;
          }
           #surec .process-step {
               text-align: center;
@@ -366,11 +384,11 @@
           }
            /* Ok Stilleri (Masaüstü) */
            #surec .process-step::before {
-                content: '\f061'; /* Sağ Ok ikonu */
+                content: '\f061';
                 font-family: 'Font Awesome 6 Free';
                 font-weight: 900;
                 position: absolute;
-                right: -40px; /* Okun konumu */
+                right: -40px;
                 top: 50%;
                 transform: translateY(-50%);
                 font-size: 2em;
@@ -378,7 +396,7 @@
                 z-index: 1;
            }
             #surec .process-steps .process-step:last-child::before {
-                display: none; /* Son adımda ok olmasın */
+                display: none;
             }
            #surec .process-step .step-number {
                display: inline-block;
@@ -421,14 +439,14 @@
           }
           #stats .stat-item h3 {
               color: var(--white-color);
-              font-size: 3.5em; /* Boyut artırıldı */
+              font-size: 3.5em;
               margin-bottom: 5px;
               font-weight: 700;
               text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
           }
            #stats .stat-item p {
                color: var(--light-color);
-               font-size: 1.3em; /* Boyut artırıldı */
+               font-size: 1.3em;
                margin: 0;
                text-transform: uppercase;
            }
@@ -631,12 +649,6 @@
              text-align: left;
          }
 
-         /* Masaüstünde yan yana düzen için varsayılan */
-         @media (min-width: 768px) {
-             #ekip .team-members {
-                 flex-direction: column; /* Zaten column, bu kural burada gerekmeyebilir ama tutabiliriz */
-             }
-         }
 
         /* Sıkça Sorulan Sorular (FAQ) Bölümü */
         #faq .faq-list {
@@ -815,7 +827,7 @@
 
         /* Scroll Top Butonu */
         #scrollTopBtn {
-            display: none; /* Başlangıçta gizli */
+            display: none;
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -829,13 +841,13 @@
             border-radius: 50%;
             font-size: 1.2em;
             transition: background-color 0.3s ease, opacity 0.5s ease;
-             opacity: 0; /* Gizlemek için başlangıçta 0 */
+             opacity: 0;
              box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
         #scrollTopBtn.show {
-            display: block; /* Göster */
-             opacity: 1; /* Görünür yap */
+            display: block;
+             opacity: 1;
         }
 
         #scrollTopBtn:hover {
@@ -845,7 +857,7 @@
         /* Scroll Animasyonları için Temel Stiller */
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(50px); /* Hafif aşağıdan başla */
+            transform: translateY(50px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         .animate-on-scroll.is-visible {
@@ -855,179 +867,233 @@
 
         /* =========================================== */
         /* !!! RESPONSIVE CSS - MEDYA SORGULARI !!! */
+        /* Mobil Hamburger Menü Ayarları Buraya Ekleniyor */
         /* =========================================== */
+
 
         /* Large devices (desktops, less than 1200px) */
         @media (max-width: 1199.98px) {
-            .container {
-                width: 90%; /* %90 genişliği koru */
-            }
-             h1 { font-size: 2.3em; }
-             h2 { font-size: 2.8em; }
-             h3 { font-size: 1.8em; }
-              #hero h2 { font-size: 4.5em; }
-              #hero p { font-size: 1.6em; }
-              #hero .btn { padding: 16px 40px; font-size: 1.4em; }
+            .container { width: 90%; }
+            h1 { font-size: 2.3em; }
+            h2 { font-size: 2.8em; }
+            h3 { font-size: 1.8em; }
+            #hero h2 { font-size: 4.5em; }
+            #hero p { font-size: 1.6em; }
+            #hero .btn { padding: 16px 40px; font-size: 1.4em; }
 
-              #surec .process-steps { gap: 40px; } /* Oklar için boşluğu ayarla */
-              #surec .process-step::before { right: -30px; font-size: 1.8em; } /* Ok konumu/boyutu */
+            #surec .process-steps { gap: 40px; }
+            #surec .process-step::before { right: -30px; font-size: 1.8em; }
 
-               #ekip .team-member img { width: 140px; height: 140px; margin-right: 30px; }
-               #ekip .team-member .member-info h3 { font-size: 1.6em; }
-                #ekip .team-member .role { font-size: 1.1em; }
-                #ekip .team-member .description { font-size: 1em; }
-                #ekip .team-member .skills { font-size: 0.95em; }
+            #ekip .team-member img { width: 140px; height: 140px; margin-right: 30px; }
+            #ekip .team-member .member-info h3 { font-size: 1.6em; }
+            #ekip .team-member .role { font-size: 1.1em; }
+            #ekip .team-member .description { font-size: 1em; }
+            #ekip .team-member .skills { font-size: 0.95em; }
 
-                #stats .stat-item h3 { font-size: 3em; }
-                 #stats .stat-item p { font-size: 1.2em; }
+            #stats .stat-item h3 { font-size: 3em; }
+            #stats .stat-item p { font-size: 1.2em; }
 
-                #iletisim .contact-info p { font-size: 1.2em; }
+            #iletisim .contact-info p { font-size: 1.2em; }
         }
 
         /* Medium devices (tablets, less than 992px) */
         @media (max-width: 991.98px) {
-             header .container {
-                 flex-direction: column;
-                 text-align: center;
+             /* Masaüstü nav'ı gizle, mobil toggle'ı göster */
+            header nav { display: none; /* Navigasyon varsayılan olarak gizli */ }
+            header .menu-toggle { display: block; /* Hamburger butonu görünür */ }
+
+
+            header .container {
+                 flex-direction: row; /* Logo ve buton yan yana */
+                 justify-content: space-between; /* Boşluk bırak */
+                 align-items: center;
+            }
+             header h1 { margin-bottom: 0; }
+
+
+             /* Açılan Mobil Menü Stilleri */
+            header nav.active { /* JS ile 'active' sınıfı eklendiğinde görünür */
+                display: block; /* Gizliliği kaldır */
+                position: absolute; /* Akıştan çıkar */
+                top: 100%; /* Header'ın hemen altına yerleştir */
+                left: 0;
+                width: 100%;
+                background: var(--dark-color); /* Arkaplan rengi */
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+                padding: 10px 0; /* İç boşluk */
+                 border-top: 1px solid rgba(255,255,255,0.1);
+                 z-index: 999; /* Header'dan bir tık aşağıda */
+                 text-align: center; /* Menü öğelerini ortala */
+            }
+            header nav.active ul {
+                 flex-direction: column; /* Öğeleri alt alta sırala */
+                 align-items: center; /* Ortala */
+                 padding: 0;
+            }
+            header nav.active li {
+                margin: 10px 0; /* Alt alta boşluk */
+                display: block; /* Tam satırı kapla */
+            }
+            header nav.active a {
+                 font-size: 1em; /* Menü yazı boyutu */
+                 padding: 8px 0;
+                 display: block; /* Tıklama alanını genişlet */
+                 border-bottom: none; /* Alt çizgi olmasın */
+            }
+             header nav.active a:hover {
+                 color: var(--primary-color);
+                  text-decoration: underline;
              }
-             header h1 { margin-bottom: 10px; }
-             header nav { margin-top: 10px; width: 100%; } /* Menü genişliği */
-             header nav ul { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; }
-             header nav li { margin: 0 15px; /* Menü öğeleri arası boşluk */ }
+
 
              #hero { min-height: 80vh; padding: 80px 0; }
              #hero h2 { font-size: 3.8em; }
              #hero p { font-size: 1.3em; }
-              #hero .btn { padding: 14px 35px; font-size: 1.2em; }
+             #hero .btn { padding: 14px 35px; font-size: 1.2em; }
 
              h2 { font-size: 2.5em; margin-bottom: 30px; }
-              h3 { font-size: 1.7em; }
-              section { padding: 80px 0; }
-               section:before { height: 80px; margin-top: -80px; } /* Header yüksekliğine göre offset */
+             h3 { font-size: 1.7em; }
+             section { padding: 80px 0; }
+             section:before { height: 80px; margin-top: -80px; }
 
 
              #why-choose-us .reason-item h3 { font-size: 1.4em; }
-              #hizmetler .service-card h3 { font-size: 1.4em; }
+             #hizmetler .service-card h3 { font-size: 1.4em; }
 
-             /* Süreç adımları yataydan dikey geçiş */
-              #surec .process-steps {
-                  grid-template-columns: 1fr; /* Tek kolon */
-                  gap: 50px; /* Adımlar arası dikey boşluk */
-              }
-               #surec .process-step { padding: 25px 20px; }
-              /* Okların dikey konumu */
-               #surec .process-step::before {
-                   content: '\f063'; /* Aşağı Ok ikonu */
-                   top: auto; /* Yatay konum ayarları devre dışı */
-                   bottom: -40px; /* Altına boşluk ve konum */
-                   left: 50%; /* Ortala */
-                   right: auto;
-                   transform: translateX(-50%); /* Yatayda tam ortala */
-                    font-size: 2em;
-               }
-               #surec .process-steps .process-step:last-child::before { display: none; } /* Son adımda ok olmasın */
+             #surec .process-steps {
+                 grid-template-columns: 1fr;
+                 gap: 50px;
+             }
+             #surec .process-step { padding: 25px 20px; }
+             #surec .process-step::before {
+                 content: '\f063';
+                 top: auto;
+                 bottom: -40px;
+                 left: 50%;
+                 right: auto;
+                 transform: translateX(-50%);
+                 font-size: 2em;
+             }
+             #surec .process-steps .process-step:last-child::before { display: none; }
 
 
-               #ekip .team-member {
-                  flex-direction: column; /* Alt alta sırala */
-                  text-align: center;
-              }
-              #ekip .team-member img {
-                  margin-right: 0;
-                  margin-bottom: 20px; /* Resmin altına boşluk */
-                   width: 140px;
-                   height: 140px;
-              }
-               #ekip .team-member .member-info h3,
-               #ekip .team-member .member-info .role,
-               #ekip .team-member .member-info .description,
-               #ekip .team-member .member-info .skills {
-                  text-align: center; /* Yazıları ortala */
-               }
+             #ekip .team-member {
+                 flex-direction: column;
+                 text-align: center;
+             }
+             #ekip .team-member img {
+                 margin-right: 0;
+                 margin-bottom: 20px;
+                 width: 140px;
+                 height: 140px;
+             }
+             #ekip .team-member .member-info h3,
+             #ekip .team-member .member-info .role,
+             #ekip .team-member .member-info .description,
+             #ekip .team-member .member-info .skills {
+                 text-align: center;
+             }
 
-               #faq .faq-question { font-size: 1em; }
-               #faq .faq-answer { font-size: 0.95em; }
+             #faq .faq-question { font-size: 1em; }
+             #faq .faq-answer { font-size: 0.95em; }
 
-               #iletisim .contact-info p { font-size: 1.1em; }
-               #iletisim form { padding: 30px; }
+             #iletisim .contact-info p { font-size: 1.1em; }
+             #iletisim form { padding: 30px; }
         }
 
         /* Small devices (landscape phones, less than 768px) */
         @media (max-width: 767.98px) {
-             header nav li { margin: 0 10px; /* Menü aralığı */ }
+            /* Header padding'i ve logo boyutu */
+            header { padding: 8px 0; }
+            header h1 { font-size: 1.8em; }
+            header .menu-toggle { font-size: 1.6em; padding: 8px; } /* Buton boyutu */
+
+             /* Açılan Mobil Menü Stilleri (biraz daha daraltıldı) */
+            header nav.active { padding: 5px 0; }
+            header nav.active li { margin: 8px 0; }
+             header nav.active a { font-size: 0.95em; padding: 6px 0; }
+
 
              #hero { min-height: 60vh; padding: 50px 0; }
              #hero h2 { font-size: 3em; margin-bottom: 20px; }
              #hero p { font-size: 1.1em; margin-bottom: 30px;}
-              #hero .btn { padding: 12px 30px; font-size: 1.1em; }
+             #hero .btn { padding: 12px 30px; font-size: 1.1em; }
 
              h2 { font-size: 2.2em; margin-bottom: 25px; padding-bottom: 8px; }
              h3 { font-size: 1.5em; }
              section { padding: 60px 0; }
-              section:before { height: 70px; margin-top: -70px; } /* Header yüksekliğine göre offset */
+             section:before { height: 70px; margin-top: -70px; }
 
 
             /* Grid elemanları tek kolon */
              #why-choose-us .reasons-grid,
              #hizmetler .service-cards,
-              #stats .stats-grid,
+             #stats .stats-grid,
              #referanslar .gallery,
-              #yorumlar .testimonials-slider {
+             #yorumlar .testimonials-slider {
                  grid-template-columns: 1fr;
              }
 
              #why-choose-us .reason-item,
              #hizmetler .service-card,
              #surec .process-step,
-              #stats .stat-item, /* İstatistikler de tek kolon */
+             #stats .stat-item,
              #yorumlar .testimonial-item,
              #ekip .team-member {
-                 padding: 20px; /* İç boşlukları azalt */
+                 padding: 20px;
              }
 
-              #surec .process-step::before { /* Oklar */
+             #surec .process-step::before {
                  bottom: -30px;
                  font-size: 1.8em;
-              }
+             }
 
-              #ekip .team-member img { width: 100px; height: 100px; margin-bottom: 15px; }
-               #ekip .team-member .member-info h3 { font-size: 1.5em; }
-                #ekip .team-member .role { font-size: 1em; }
-                #ekip .team-member .description { font-size: 0.95em; }
-                #ekip .team-member .skills { font-size: 0.9em; }
+             #ekip .team-member img { width: 100px; height: 100px; margin-bottom: 15px; }
+             #ekip .team-member .member-info h3 { font-size: 1.5em; }
+             #ekip .team-member .role { font-size: 1em; }
+             #ekip .team-member .description { font-size: 0.95em; }
+             #ekip .team-member .skills { font-size: 0.9em; }
 
-               #referanslar .gallery img { height: 200px; } /* Resim yüksekliği */
-               #referanslar .gallery .overlay-text { font-size: 1.2em; }
+             #referanslar .gallery img { height: 200px; }
+             #referanslar .gallery .overlay-text { font-size: 1.2em; }
 
-              #faq .faq-question { font-size: 0.95em; padding: 12px 15px; }
-               #faq .faq-answer { padding: 12px 15px; font-size: 0.9em; }
+             #faq .faq-question { font-size: 0.95em; padding: 12px 15px; }
+             #faq .faq-answer { padding: 12px 15px; font-size: 0.9em; }
 
 
-              #iletisim form { padding: 25px; }
-              #iletisim form input[type="text"],
-              #iletisim form input[type="email"],
-              #iletisim form input[type="tel"],
-              #iletisim form textarea { width: calc(100% - 20px); padding: 10px; margin-bottom: 15px;}
-               #iletisim form button { padding: 12px; font-size: 1em;}
-               #iletisim .contact-info p { font-size: 1em; }
+             #iletisim form { padding: 25px; }
+             #iletisim form input[type="text"],
+             #iletisim form input[type="email"],
+             #iletisim form input[type="tel"],
+             #iletisim form textarea { width: calc(100% - 20px); padding: 10px; margin-bottom: 15px;}
+             #iletisim form button { padding: 12px; font-size: 1em;}
+             #iletisim .contact-info p { font-size: 1em; }
         }
 
         /* Extra small devices (phones, less than 576px) */
         @media (max-width: 575.98px) {
-            header nav ul { flex-direction: column; align-items: center; } /* Menü alt alta */
-            header nav li { margin: 8px 0; }
-             header h1 { font-size: 2em; }
+            /* Header padding'i ve logo boyutu */
+            header { padding: 5px 0; }
+            header h1 { font-size: 1.6em; margin-bottom: 0; /* Logo altında boşluk olmasın */ }
+             header .menu-toggle { font-size: 1.5em; padding: 6px; } /* Buton boyutu */
+
+
+             /* Açılan Mobil Menü Stilleri (en dar ekranlar için) */
+            header nav.active { padding: 5px 0; }
+            header nav.active li { margin: 5px 0; /* Alt alta boşluk */ }
+             header nav.active a { font-size: 0.9em; padding: 5px 0; }
 
 
             #hero { min-height: 50vh; padding: 40px 0; }
-            #hero h2 { font-size: 2.2em; margin-bottom: 15px; }
+            #hero h2 { font-size: 2.5em; margin-bottom: 15px; }
             #hero p { font-size: 0.9em; margin-bottom: 20px; }
-             #hero .btn { padding: 10px 20px; font-size: 1em; }
+            #hero .btn { padding: 10px 20px; font-size: 1em; }
 
             h2 { font-size: 1.8em; margin-bottom: 20px; padding-bottom: 5px; }
-             h3 { font-size: 1.3em; }
+            h3 { font-size: 1.3em; }
             section { padding: 40px 0; }
-             section:before { height: 60px; margin-top: -60px; } /* Header yüksekliğine göre offset */
+             section:before { height: 60px; margin-top: -60px; }
+
 
             #why-choose-us .reason-item,
             #hizmetler .service-card,
@@ -1037,48 +1103,20 @@
              #yorumlar .testimonial-item,
              #ekip .team-member,
              #iletisim form {
-                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Daha hafif gölge */
-                  padding: 15px;
+                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                 padding: 15px;
              }
 
-             /* Hover efektlerini kapat (performans/dokunmatik için) */
-             .reason-item:hover,
-             .service-card:hover,
-             .gallery-item:hover,
-             .testimonial-item:hover,
-             .team-member:hover {
-                 transform: none;
-                 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-             }
-              .service-card:hover::before { /* Kart üst çizgi efekti kapatıldı */
-                  height: 5px;
-                  opacity: 1;
-              }
-              .service-card:hover i,
-              .service-card:hover h3,
-              .service-card:hover p {
-                 color: inherit;
-              }
-               .gallery-item:hover::before, /* Galeri overlay kapatıldı */
-               .gallery-item:hover .overlay-text {
-                  opacity: 0;
-               }
-                .gallery img:hover { /* Galeri resim büyüme kapatıldı */
-                   transform: none;
-                   opacity: 1;
-                }
+             /* Hover efektlerini kapat */
+             .reason-item:hover, .service-card:hover, .gallery-item:hover,
+             .testimonial-item:hover, .team-member:hover { transform: none; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); }
+             .service-card:hover::before { height: 5px; opacity: 1; }
+             .service-card:hover i, .service-card:hover h3, .service-card:hover p { color: inherit; }
+             .gallery-item:hover::before, .gallery-item:hover .overlay-text { opacity: 0; }
+             .gallery img:hover { transform: none; opacity: 1; }
+             .animate-on-scroll { opacity: 1; transform: translateY(0); transition: none; }
 
-             /* Scroll Animasyonunu kapat */
-             .animate-on-scroll {
-                 opacity: 1;
-                 transform: translateY(0);
-                 transition: none;
-             }
-
-              #surec .process-step::before { /* Oklar */
-                 bottom: -25px; /* Daha yakın */
-                 font-size: 1.5em;
-              }
+              #surec .process-step::before { bottom: -25px; font-size: 1.5em; }
 
                #ekip .team-member img { width: 80px; height: 80px; margin-bottom: 10px; }
                #ekip .team-member .member-info h3 { font-size: 1.3em; }
@@ -1110,6 +1148,10 @@
     <header>
         <div class="container">
             <h1>KERMELİ İNŞAAT</h1>
+            <!-- Hamburger Menü Butonu -->
+            <button class="menu-toggle" aria-label="Menüyü Aç/Kapat">
+                <i class="fas fa-bars"></i>
+            </button>
             <nav>
                 <ul>
                     <li><a href="#hakkimizda">Hakkımızda</a></li>
@@ -1168,7 +1210,7 @@
                  <div class="reason-item animate-on-scroll">
                     <i class="fas fa-clock"></i>
                     <h3>Söz Verdiğimiz Zamanda</h3>
-                    <p>Proje takvimine sadık kalır, projelerinizi zamanında tamamlarız.</p>
+                    <p>Proje takvimine sadık kalarak işleri zamanında tamamlarız.</p>
                 </div>
                  <div class="reason-item animate-on-scroll">
                     <i class="fas fa-toolbox"></i>
@@ -1287,11 +1329,11 @@
                      <p>Tamamlanan Proje</p>
                  </div>
                   <div class="stat-item animate-on-scroll">
-                     <h3>%95</h3> <!-- Örn: %95 -->
+                     <h3>%92</h3> <!-- Örn: %95 -->
                      <p>Müşteri Memnuniyeti</p>
                  </div>
                   <div class="stat-item animate-on-scroll">
-                     <h3>100 +</h3> <!-- Örn: 50+ -->
+                     <h3>594+</h3> <!-- Örn: 50+ -->
                      <p>Referans Müşteri</p>
                  </div>
              </div>
@@ -1315,12 +1357,12 @@
                      <img src="images/tasduvar.jpg" alt="Taş Duvar Uygulaması">
                      <div class="overlay-text">Doğal Taş Duvar</div>
                 </div>
-              
+            
                 <div class="gallery-item animate-on-scroll">
                      <img src="images/betonerme.jpg" alt="Betonarme Temel">
                      <div class="overlay-text">Sağlam Temel</div>
                 </div>
-             
+        
                  <div class="gallery-item animate-on-scroll">
                      <img src="images/images.jpg" alt="Mantolama">
                      <div class="overlay-text">Dış Cephe Yalıtım</div>
@@ -1380,43 +1422,42 @@
                     </div>
                 </div>
                 <div class="team-member animate-on-scroll">
-                    <img src="members/ibo.PNG" alt="İbrahim Kermeli Fotoğrafı"> <!-- Gerçek fotoğraf placeholder -->
-                   <div class="member-info">
-                       <h3>İbrahim Kermeli</h3>
-                       <p class="role">Usta</p>
-                       <p class="description">KERMELİ İNŞAAT'ın vizyonunu belirleyen ve her projenin başında bizzat yer alan tecrübeli usta. Kalite kontrol ve proje yönetimi onun işi.</p>
-                       <p class="skills"><strong>Uzmanlık Alanları:</strong> Duvar örme, Taş taşıma ve yüksek bilgi kalitesi ile inşaata farklı bir bakış açısı getirme.</p>
-                   </div>
-               </div>
-                <div class="team-member animate-on-scroll">
-                     <img src="members/cemil.jpg" alt="Cemil Fotoğrafı"> <!-- Gerçek fotoğraf placeholder -->
+                     <img src="members/ibo.PNG" alt="İbrahim Fotoğrafı"> <!-- Gerçek fotoğraf placeholder -->
                     <div class="member-info">
-                        <h3>Cemil</h3>
+                        <h3>İbrahim</h3>
                         <p class="role">Kaba İnşaat Şefi</p>
                         <p class="description">Yapıların temelini oluşturan betonarme ve kaba duvar işlerinde uzmandır. Projelerin iskeletinin sağlamlığından sorumludur.</p>
                         <p class="skills"><strong>Uzmanlık Alanları:</strong> Betonarme Kalıp Sistemleri, Demir Donatı, Beton Dökümü, Kaba Tuğla/Bims Duvar, Perde Duvar</p>
                     </div>
                 </div>
                 <div class="team-member animate-on-scroll">
-                     <img src="members/cuma.PNG" alt="Cuma Fotoğrafı"> <!-- Gerçek fotoğraf placeholder -->
+                     <img src="members/aziz.jpg" alt="Aziz Fotoğrafı"> <!-- Gerçek fotoğraf placeholder -->
                     <div class="member-info">
-                        <h3>Cuma</h3>
+                        <h3>Aziz</h3>
                         <p class="role">Duvar ve Sıva Ustası</p>
                         <p class="description">Her türlü duvar örme tekniğine hakim. Pürüzsüz sıva işleriyle yüzeyleri ince işlere hazırlar.</p>
                         <p class="skills"><strong>Uzmanlık Alanları:</strong> Tuğla/Bims/Gazbeton Duvar Örme, Kaba ve İnce Sıva, Alçı Sıva, Mantolama Altı Sıva</p>
                     </div>
                 </div>
                 <div class="team-member animate-on-scroll">
-                    <img src="members/aziz.jpg" alt="Aziz Fotoğrafı"> <!-- Gerçek fotoğraf placeholder -->
+                    <img src="members/cemil.jpg" alt="Ahmet Fotoğrafı"> <!-- Gerçek fotoğraf placeholder -->
                     <div class="member-info">
-                         <h3>Aziz</h3>
+                         <h3>Cemil</h3>
                          <p class="role">İnce İşler ve Kaplama Uzmanı</p>
                          <p class="description">Seramikten parkeye, fayansdan bordüre kadar zemin ve duvar kaplama işlerinde hassas ve estetik çalışır. Mekanlara son dokunuşu katar.</p>
                          <p class="skills"><strong>Uzmanlık Alanları:</strong> Seramik, Fayans, Granit, Mermer Döşeme, Parke ve Laminat Uygulamaları</p>
                      </div>
                 </div>
+                 <div class="team-member animate-on-scroll">
+                    <img src="members/cuma.PNG" alt="Mahmut Fotoğrafı"> <!-- Gerçek fotoğraf placeholder -->
+                    <div class="member-info">
+                         <h3>Cuma</h3>
+                         <p class="role">Tandır, Fırın ve Barbekü Ustası</p>
+                         <p class="description">Geleneksel ve modern tasarımlarda, fonksiyonel ve estetik tandır, taş fırın ve barbekü alanları inşa eder. Ateşle sanat yapar.</p>
+                         <p class="skills"><strong>Uzmanlık Alanları:</strong> Geleneksel Tandır Yapımı, Taş Fırın İnşası, Modern Barbekü ve Şömine Yapımı</p>
+                     </div>
+                 </div>
              
-              
                  <!-- Daha fazla ekip üyesi ekleyebilirsiniz -->
             </div>
         </div>
@@ -1473,10 +1514,10 @@
         <div class="container">
             <h2 class="animate-on-scroll">Bizimle İletişime Geçin</h2>
              <div class="contact-info animate-on-scroll">
-                <p><i class="fas fa-phone-alt"></i> <strong>Telefon:</strong> <a href="tel:[Telefon Numarası]">+90 533 399 56 98</a></p>
-                <p><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> <a href="https://wa.me/[Telefon Numarası WhatsApp Formatında]" target="_blank">+90 533 399 56 98</a></p>
-                <p><i class="fas fa-envelope"></i> <strong>E-posta:</strong> <a href="mailto:[E-posta Adresi]">kermeliinşaat@gmail.com</a></p>
-                <p><i class="fas fa-map-marker-alt"></i> <strong>Adres:</strong> Büyükhan Mah. Eyyübiye/Şanlıurfa</p>
+                <p><i class="fas fa-phone-alt"></i> <strong>Telefon:</strong> <a href="tel:[Telefon Numarası]">[Telefon Numarası]</a></p>
+                <p><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> <a href="https://wa.me/[Telefon Numarası WhatsApp Formatında]" target="_blank">[Telefon Numarası]</a></p>
+                <p><i class="fas fa-envelope"></i> <strong>E-posta:</strong> <a href="mailto:[E-posta Adresi]">[E-posta Adresi]</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Adres:</strong> [Adres Bilgisi]</p>
              </div>
 
             <!-- İletişim Formu -->
@@ -1513,6 +1554,39 @@
 
 
     <script>
+        // Hamburger Menü Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('header nav');
+        const navLinks = document.querySelectorAll('header nav a'); // Nav linklerini seç
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active'); // Nav'a active sınıfı ekle/kaldır
+            // Buton ikonunu değiştir (hamburger <-> çarpı)
+            const icon = menuToggle.querySelector('i');
+            if (nav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times'); // Çarpı ikonu
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars'); // Hamburger ikonu
+            }
+        });
+
+        // Menü linkine tıklayınca menüyü kapat (sadece mobilde)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                 // Sadece menü aktifse (açıksa) kapat
+                 if (nav.classList.contains('active')) {
+                     nav.classList.remove('active');
+                     // İkonu hamburger yap
+                     const icon = menuToggle.querySelector('i');
+                     icon.classList.remove('fa-times');
+                     icon.classList.add('fa-bars');
+                 }
+            });
+        });
+
+
         // Navigasyon linklerine tıklandığında yumuşak kaydırma
         document.querySelectorAll('header nav a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1523,7 +1597,6 @@
 
                 if (targetElement) {
                      const headerHeight = document.querySelector('header').offsetHeight;
-                     // getBoundingClientRect().top + window.pageYOffset, elementin sayfanın en üstüne olan uzaklığıdır.
                      const targetPosition = window.pageYOffset + targetElement.getBoundingClientRect().top - headerHeight;
 
                     window.scrollTo({
@@ -1536,23 +1609,25 @@
 
         // Kaydırma sırasında aktif menü öğesini belirleme
         const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('header nav a');
         const header = document.querySelector('header');
-
 
         const setActiveNavLink = () => {
             let current = '';
             const headerHeight = header.offsetHeight;
-            // Kaydırma pozisyonuna header yüksekliğini ve biraz daha tolerans ekleyerek offseti düzelt
-            const scrollPosition = window.pageYOffset + headerHeight + 150; // 150px offset
+            // Kaydırma pozisyonuna header yüksekliğini ve biraz daha tolerans ekle
+            const scrollOffset = 150; // Varsayılan offset
+             // Mobil menü kapalıysa daha az offset yeterli olabilir, ama açıldığında header yüksekliği artar.
+             // sticky header yüksekliğini dynamic olarak hesaplamak en iyisi.
+             // const scrollOffset = window.innerWidth > 991.98 ? 150 : 100; // Önceki gibi ekran boyutuna göre offset
+
+            const scrollPosition = window.pageYOffset + headerHeight + scrollOffset;
+
 
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
                 const sectionId = section.getAttribute('id');
 
-                // Eğer kaydırma pozisyonu bölümün tepesinden büyük veya eşitse VE
-                // kaydırma pozisyonu bölümün tepesi + yüksekliğinden küçükse
                 if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                     current = '#' + sectionId;
                 }
@@ -1568,25 +1643,25 @@
             if (currentNavLink) {
                 currentNavLink.classList.add('active');
             }
-            // İsteğe bağlı: Eğer sayfanın en üstündeysek (hero section), ilk menü linkini (Genelde Hakkımızda) aktif yap
-            else if (window.pageYOffset === 0) {
-                const hakkimizdaLink = document.querySelector('header nav a[href="#hakkimizda"]');
-                 if(hakkimizdaLink) {
-                     hakkimizdaLink.classList.add('active');
-                 }
-            }
+             // İsteğe bağlı: Eğer sayfanın en üstündeysek (hero section), ilk menü linkini (Genelde Hakkımızda) aktif yap
+             else if (window.pageYOffset === 0) {
+                 const hakkimizdaLink = document.querySelector('header nav a[href="#hakkimizda"]');
+                  if(hakkimizdaLink) {
+                      navLinks.forEach(link => link.classList.remove('active')); // Diğerlerini kapat
+                      hakkimizdaLink.classList.add('active');
+                  }
+             }
         };
 
-        // Sayfa yüklendiğinde ve her kaydırma olayında aktif linki güncelle
         window.addEventListener('load', setActiveNavLink);
         window.addEventListener('scroll', setActiveNavLink);
+        window.addEventListener('resize', setActiveNavLink); // Ekran boyutu değişince de güncelle
 
 
         // Scroll Top Butonu Göster/Gizle ve Tıklama
         const scrollTopBtn = document.getElementById("scrollTopBtn");
 
         window.addEventListener('scroll', () => {
-            // Sayfa 400px aşağı kaydırıldığında butonu göster
             if (window.pageYOffset > 400) {
                 scrollTopBtn.classList.add("show");
             } else {
@@ -1594,7 +1669,6 @@
             }
         });
 
-        // Butona tıklayınca sayfayı en üste kaydır
         scrollTopBtn.addEventListener("click", () => {
             window.scrollTo({
                 top: 0,
@@ -1606,35 +1680,28 @@
         const animateElements = document.querySelectorAll('.animate-on-scroll');
 
         const checkIsInView = () => {
-            animateElements.forEach(element => {
-                // getBoundingClientRect() elementin viewport'a göre pozisyonunu verir
-                const rect = element.getBoundingClientRect();
-                // %15'i göründüğünde animasyonu başlatmak için offset
-                const viewportHeight = window.innerHeight;
-                const offset = viewportHeight * 0.15;
+             // Sadece 576px üstü ekranlarda animasyonu çalıştır
+            if (window.innerWidth > 575.98) {
+                animateElements.forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    const viewportHeight = window.innerHeight;
+                    const offset = viewportHeight * 0.15;
 
-
-                // Element viewport içinde görünüyor mu? (Offset ile)
-                if (rect.top < viewportHeight - offset && rect.bottom > offset) {
-                    element.classList.add('is-visible');
-                }
-                // İsteğe bağlı: Element viewport dışına çıkınca animasyonu sıfırlamak isterseniz (tekrar girince tekrar oynar)
-                /*
-                else {
-                    element.classList.remove('is-visible');
-                }
-                */
-            });
+                    if (rect.top < viewportHeight - offset && rect.bottom > offset) {
+                        element.classList.add('is-visible');
+                    }
+                });
+            } else {
+                 // Küçük ekranlarda animasyonu kapat (CSS'te de kapatıldı ama JS kontrolü daha sağlam)
+                 animateElements.forEach(element => {
+                     element.classList.add('is-visible'); // Direkt görünür yap
+                 });
+            }
         };
 
-        // Sayfa yüklendiğinde ve her scroll olayında kontrol et
-        window.addEventListener('load', () => {
-             checkIsInView(); // Sayfa yüklendiğinde görünür elemanları kontrol et
-             // Küçük ekranlarda (örn. 576px altı) scroll animasyonunu devre dışı bırakmak isterseniz
-             if (window.innerWidth > 575.98) {
-                window.addEventListener('scroll', checkIsInView);
-             }
-        });
+        window.addEventListener('load', checkIsInView);
+        window.addEventListener('scroll', checkIsInView);
+        window.addEventListener('resize', checkIsInView); // Ekran boyutu değişince de kontrol et
 
 
         // FAQ Accordion Script
@@ -1642,14 +1709,12 @@
 
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
-                const answer = question.nextElementSibling; // Soruyu takip eden cevap div'i
+                const answer = question.nextElementSibling;
 
-                // Eğer bu soru zaten açıksa, kapat
                 if (answer.classList.contains('active')) {
                     answer.classList.remove('active');
                     question.classList.remove('active');
                 } else {
-                    // Açılacak soru bu değilse, diğerlerini kapat
                     document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
                         otherAnswer.classList.remove('active');
                     });
@@ -1657,15 +1722,12 @@
                          otherQuestion.classList.remove('active');
                     });
 
-                    // Tıklanan soruyu aç
                     answer.classList.add('active');
                     question.classList.add('active');
                 }
             });
         });
 
-
-        // Not: İletişim formunun gönderilmesi için server tarafı kodlama veya Formspree gibi bir servis gerekir.
     </script>
 
 </body>
