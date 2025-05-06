@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KERMELİ İNŞAAT - Güvenilir İnşaat, Tadilat ve Yapı Çözümleri</title>
+
+    <!-- Google Fonts - Başlıklar için Oswald, Metinler için Lato -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome İkon Kütüphanesi (Harici Kaynak) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Genel Stiller ve Değişkenler */
+        :root {
+            --primary-color: #f39c12; /* Turuncu */
+            --secondary-color: #e67e22; /* Koyu Turuncu */
+            --dark-color: #34495e; /* Petrol Mavisi/Koyu Gri */
+            --light-color: #ecf0f1; /* Açık Gri */
+            --white-color: #ffffff;
+            --text-color: #444; /* Daha koyu metin */
+            --heading-font: 'Oswald', sans-serif;
+            --body-font: 'Lato', sans-serif;
+        }
+
+        body {
+            font-family: var(--body-font);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            scroll-behavior: smooth;
+            overflow-x: hidden; /* Yatay kaydırmayı engelle */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--heading-font);
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+         h1 {
+             font-size: 2.5em;
+             font-weight: 700;
+         }
+         h2 {
+            font-size: 3em;
+            margin-top: 0;
+            padding-top: 30px;
+            font-weight: 600;
+            border-bottom: 3px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+         }
+         h3 {
+             font-size: 2em;
+             margin-bottom: 15px;
+             font-weight: 600;
+         }
+
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        /* Header ve Navigasyon */
+        header {
+            background: var(--dark-color);
+            color: var(--white-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        header .container {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             flex-wrap: wrap;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2.2em;
+            font-weight: 700;
+             flex-shrink: 0;
+        }
+
+        header nav {
+             margin-top: 0; /* Masaüstünde üst boşluk olmasın */
+        }
+
+        header nav ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: center;
+        }
+
+        header nav li {
+            display: inline-block;
+            margin-left: 20px;
+             margin-top: 0; /* Masaüstünde üst boşluk olmasın */
+        }
+
+        header nav a {
+            color: var(--white-color);
+            text-transform: uppercase;
+            font-size: 0.9em;
+            font-weight: 600;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+        }
+
+        header nav a:hover,
+        header nav a.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        /* Hero Bölümü */
+        #hero {
+            background: linear-gradient(rgba(52, 73, 94, 0.88), rgba(52, 73, 94, 0.88)), url('hero-construction.jpg') no-repeat center center/cover;
+            color: var(--white-color);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 100px 0;
+        }
+
+
+        #hero .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            padding: 20px;
+        }
+
+        #hero h2 {
+            color: var(--white-color);
+            font-size: 5em;
+            margin-bottom: 25px;
+             text-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+            border-bottom: none;
+            display: block;
+            text-align: center;
+        }
+
+        #hero p {
+            font-size: 1.8em;
+            margin-bottom: 50px;
+             text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+             max-width: 900px;
+             margin-left: auto;
+             margin-right: auto;
+        }
+
+        #hero .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white-color);
+            padding: 18px 45px;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        #hero .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-7px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+        }
+
+        /* Bölüm Stilleri */
+        section {
+            padding: 100px 0;
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        section:before { /* Sticky header için offset */
+            content: "";
+            display: block;
+            height: 90px; /* header yüksekliğine yakın */
+            margin-top: -90px;
+            visibility: hidden;
+        }
+
+        section:nth-of-type(even) {
+             background: var(--white-color);
+        }
+         section:nth-of-type(odd) {
+             background: var(--light-color);
+         }
+
+        #hakkimizda p {
+            text-align: center;
+            max-width: 900px;
+            margin: 30px auto;
+            font-size: 1.15em;
+            color: #555;
+        }
+         #hakkimizda p strong {
+             color: var(--dark-color);
+         }
+
+        /* Neden Bizi Seçmelisiniz Bölümü */
+        #why-choose-us .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        #why-choose-us .reason-item {
+            background: var(--white-color);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+             border-bottom: 4px solid var(--primary-color);
+        }
+         #why-choose-us .reason-item:hover {
+             transform: translateY(-10px);
+             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+         }
+
+        #why-choose-us .reason-item i {
+            font-size: 3.8em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        #why-choose-us .reason-item h3 {
+            font-size: 1.6em;
+            margin-top: 0;
+             color: var(--dark-color);
+             font-weight: 700;
+        }
+
+         #why-choose-us .reason-item p {
+             font-size: 1.05em;
+             color: #666;
+         }
+
+        /* Hizmetler Bölümü */
+        #hizmetler .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        #hizmetler .service-card {
+            background: var(--white-color);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+             overflow: hidden;
+        }
+         #hizmetler .service-card::before {
+             content: '';
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 5px;
+             background: var(--primary-color);
+             transition: height 0.3s ease;
+         }
+          #hizmetler .service-card:hover::before {
+              height: 100%;
+              opacity: 0.1;
+          }
+
+
+        #hizmetler .service-card i {
+            font-size: 4em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+             position: relative; z-index: 2;
+        }
+         #hizmetler .service-card:hover i {
+             color: var(--dark-color);
+         }
+
+
+        #hizmetler .service-card h3 {
+            font-size: 1.6em;
+            margin-top: 0;
+             color: var(--dark-color);
+             font-weight: 700;
+             transition: color 0.3s ease;
+              position: relative; z-index: 2;
+        }
+         #hizmetler .service-card:hover h3 {
+             color: var(--primary-color);
+         }
+
+         #hizmetler .service-card p {
+             font-size: 1.05em;
+             color: #666;
+             transition: color 0.3s ease;
+              position: relative; z-index: 2;
+         }
+          #hizmetler .service-card:hover p {
+             color: var(--dark-color);
+          }
+
+         /* Çalışma Sürecimiz Bölümü */
+         #surec .process-steps {
+             margin-top: 40px;
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+             gap: 50px; /* Oklar için daha geniş boşluk */
+         }
+          #surec .process-step {
+              text-align: center;
+              padding: 30px 20px;
+              background: var(--white-color);
+              border-radius: 10px;
+              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+              position: relative;
+          }
+           /* Ok Stilleri (Masaüstü) */
+           #surec .process-step::before {
+                content: '\f061'; /* Sağ Ok ikonu */
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                position: absolute;
+                right: -40px; /* Okun konumu */
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 2em;
+                color: var(--primary-color);
+                z-index: 1;
+           }
+            #surec .process-steps .process-step:last-child::before {
+                display: none; /* Son adımda ok olmasın */
+            }
+           #surec .process-step .step-number {
+               display: inline-block;
+               width: 60px;
+               height: 60px;
+               line-height: 60px;
+               border-radius: 50%;
+               background: var(--primary-color);
+               color: var(--white-color);
+               font-size: 1.6em;
+               font-weight: 700;
+               margin-bottom: 15px;
+                border: 3px solid var(--secondary-color);
+           }
+           #surec .process-step h3 {
+               font-size: 1.4em;
+               margin-top: 0;
+               margin-bottom: 10px;
+               color: var(--dark-color);
+                text-transform: capitalize;
+           }
+           #surec .process-step p {
+               font-size: 1em;
+               color: #555;
+           }
+
+
+         /* Sayısal Gerçekler Bölümü */
+         #stats {
+            background: linear-gradient(rgba(230, 126, 34, 0.95), rgba(243, 156, 18, 0.95)), url('stats-background.jpg') no-repeat center center/cover;
+             color: var(--white-color);
+             padding: 80px 0;
+             text-align: center;
+         }
+          #stats .stats-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+             gap: 30px;
+             margin-top: 40px;
+          }
+          #stats .stat-item h3 {
+              color: var(--white-color);
+              font-size: 3.5em; /* Boyut artırıldı */
+              margin-bottom: 5px;
+              font-weight: 700;
+              text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+          }
+           #stats .stat-item p {
+               color: var(--light-color);
+               font-size: 1.3em; /* Boyut artırıldı */
+               margin: 0;
+               text-transform: uppercase;
+           }
+
+
+        /* Referanslar Bölümü */
+        #referanslar .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        #referanslar .gallery .gallery-item {
+             position: relative;
+             overflow: hidden;
+             border-radius: 8px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #referanslar .gallery img {
+            display: block;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            cursor: pointer;
+        }
+         #referanslar .gallery .gallery-item::before {
+             content: '';
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background: rgba(52, 73, 94, 0.6);
+             opacity: 0;
+             transition: opacity 0.5s ease;
+             z-index: 1;
+         }
+          #referanslar .gallery-item:hover::before {
+             opacity: 1;
+          }
+
+          #referanslar .gallery-item .overlay-text {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              color: var(--white-color);
+              font-size: 1.4em;
+              font-weight: 700;
+              text-align: center;
+              z-index: 2;
+              opacity: 0;
+              transition: opacity 0.5s ease;
+              text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+              padding: 10px;
+              width: 90%;
+              text-transform: uppercase;
+          }
+           #referanslar .gallery-item:hover .overlay-text {
+              opacity: 1;
+           }
+
+        #referanslar .gallery img:hover {
+            transform: scale(1.1);
+             opacity: 0.8;
+        }
+
+        /* Müşteri Yorumları Bölümü */
+        #yorumlar {
+            background: var(--dark-color);
+            color: var(--white-color);
+             padding: 80px 0;
+        }
+         #yorumlar h2 {
+             color: var(--primary-color);
+             border-bottom-color: var(--primary-color);
+         }
+         #yorumlar p {
+             text-align: center;
+             max-width: 800px;
+             margin: 20px auto 40px;
+             font-size: 1.1em;
+             color: var(--light-color);
+         }
+
+        #yorumlar .testimonials-slider {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+             gap: 30px;
+             margin-top: 40px;
+        }
+
+        #yorumlar .testimonial-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            border-top: 4px solid var(--secondary-color);
+             transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+         #yorumlar .testimonial-item:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+         }
+
+         #yorumlar .testimonial-item i {
+             font-size: 2.5em;
+             color: var(--primary-color);
+             margin-bottom: 15px;
+         }
+
+         #yorumlar .testimonial-item .quote-text {
+             font-size: 1.1em;
+             font-style: italic;
+             margin-bottom: 20px;
+             color: var(--light-color);
+         }
+
+         #yorumlar .testimonial-item .client-name {
+             font-weight: 700;
+             font-size: 1.2em;
+             color: var(--white-color);
+             margin-bottom: 5px;
+         }
+          #yorumlar .testimonial-item .client-title {
+              font-size: 0.9em;
+              color: var(--primary-color);
+          }
+
+
+        /* Ekip Bölümü */
+        #ekip .team-members {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        #ekip .team-member {
+            background: var(--white-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+             border-left: 5px solid var(--primary-color);
+        }
+         #ekip .team-member:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+         }
+
+
+        #ekip .team-member img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 40px;
+            border: 5px solid var(--secondary-color);
+            flex-shrink: 0;
+             box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        }
+
+        #ekip .team-member .member-info {
+            flex-grow: 1;
+        }
+
+        #ekip .team-member h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.8em;
+             color: var(--dark-color);
+             text-align: left;
+             text-transform: capitalize;
+        }
+         #ekip .team-member .role {
+             font-size: 1.2em;
+             color: var(--primary-color);
+             margin-bottom: 10px;
+             font-weight: 700;
+             text-align: left;
+         }
+         #ekip .team-member .description {
+             font-size: 1.1em;
+             color: #555;
+             margin-bottom: 15px;
+             text-align: left;
+         }
+         #ekip .team-member .skills {
+             font-size: 1em;
+             color: #666;
+             font-style: italic;
+             text-align: left;
+         }
+
+         /* Masaüstünde yan yana düzen için varsayılan */
+         @media (min-width: 768px) {
+             #ekip .team-members {
+                 flex-direction: column; /* Zaten column, bu kural burada gerekmeyebilir ama tutabiliriz */
+             }
+         }
+
+        /* Sıkça Sorulan Sorular (FAQ) Bölümü */
+        #faq .faq-list {
+             margin-top: 40px;
+             max-width: 900px;
+             margin-left: auto;
+             margin-right: auto;
+        }
+
+        #faq .faq-item {
+            background: var(--white-color);
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        #faq .faq-question {
+            padding: 15px 20px;
+            background: var(--light-color);
+            color: var(--dark-color);
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+             transition: background 0.3s ease;
+        }
+         #faq .faq-question:hover {
+             background: #e0e0e0;
+         }
+
+        #faq .faq-question i {
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+        #faq .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+
+        #faq .faq-answer {
+            padding: 15px 20px;
+            color: #555;
+            font-size: 1em;
+            display: none;
+             border-top: 1px solid #eee;
+        }
+         #faq .faq-answer.active {
+             display: block;
+         }
+
+
+        /* İletişim Bölümü */
+        #iletisim {
+             background: linear-gradient(to right, rgba(52, 73, 94, 0.95), rgba(52, 73, 94, 0.95)), url('contact-background.jpg') no-repeat center center/cover;
+             color: var(--white-color);
+             padding: 80px 0;
+        }
+
+        #iletisim h2 {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        #iletisim .contact-info {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--light-color);
+        }
+
+        #iletisim .contact-info p {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+             font-weight: 500;
+        }
+         #iletisim .contact-info p i {
+             margin-right: 15px;
+             color: var(--primary-color);
+             font-size: 1.2em;
+         }
+          #iletisim .contact-info a {
+              color: var(--light-color);
+              transition: color 0.3s ease;
+          }
+           #iletisim .contact-info a:hover {
+               color: var(--primary-color);
+           }
+
+
+        #iletisim form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: var(--white-color);
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+             border-top: 5px solid var(--primary-color);
+        }
+
+        #iletisim form h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--dark-color);
+        }
+
+        #iletisim form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+             color: var(--dark-color);
+        }
+
+        #iletisim form input[type="text"],
+        #iletisim form input[type="email"],
+        #iletisim form input[type="tel"],
+        #iletisim form textarea {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            font-family: var(--body-font);
+        }
+
+        #iletisim form textarea {
+            resize: vertical;
+            min-height: 150px;
+             font-family: var(--body-font);
+        }
+
+        #iletisim form button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: var(--primary-color);
+            color: var(--white-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        #iletisim form button:hover {
+            background: var(--secondary-color);
+             transform: scale(1.01);
+        }
+
+         #iletisim form .form-note {
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+            margin-top: 15px;
+            font-style: italic;
+         }
+
+
+        /* Footer Stilleri */
+        footer {
+            background: var(--dark-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9em;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Scroll Top Butonu */
+        #scrollTopBtn {
+            display: none; /* Başlangıçta gizli */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            border: none;
+            outline: none;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, opacity 0.5s ease;
+             opacity: 0; /* Gizlemek için başlangıçta 0 */
+             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        #scrollTopBtn.show {
+            display: block; /* Göster */
+             opacity: 1; /* Görünür yap */
+        }
+
+        #scrollTopBtn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Scroll Animasyonları için Temel Stiller */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px); /* Hafif aşağıdan başla */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================== */
+        /* !!! RESPONSIVE CSS - MEDYA SORGULARI !!! */
+        /* =========================================== */
+
+        /* Large devices (desktops, less than 1200px) */
+        @media (max-width: 1199.98px) {
+            .container {
+                width: 90%; /* %90 genişliği koru */
+            }
+             h1 { font-size: 2.3em; }
+             h2 { font-size: 2.8em; }
+             h3 { font-size: 1.8em; }
+              #hero h2 { font-size: 4.5em; }
+              #hero p { font-size: 1.6em; }
+              #hero .btn { padding: 16px 40px; font-size: 1.4em; }
+
+              #surec .process-steps { gap: 40px; } /* Oklar için boşluğu ayarla */
+              #surec .process-step::before { right: -30px; font-size: 1.8em; } /* Ok konumu/boyutu */
+
+               #ekip .team-member img { width: 140px; height: 140px; margin-right: 30px; }
+               #ekip .team-member .member-info h3 { font-size: 1.6em; }
+                #ekip .team-member .role { font-size: 1.1em; }
+                #ekip .team-member .description { font-size: 1em; }
+                #ekip .team-member .skills { font-size: 0.95em; }
+
+                #stats .stat-item h3 { font-size: 3em; }
+                 #stats .stat-item p { font-size: 1.2em; }
+
+                #iletisim .contact-info p { font-size: 1.2em; }
+        }
+
+        /* Medium devices (tablets, less than 992px) */
+        @media (max-width: 991.98px) {
+             header .container {
+                 flex-direction: column;
+                 text-align: center;
+             }
+             header h1 { margin-bottom: 10px; }
+             header nav { margin-top: 10px; width: 100%; } /* Menü genişliği */
+             header nav ul { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; }
+             header nav li { margin: 0 15px; /* Menü öğeleri arası boşluk */ }
+
+             #hero { min-height: 80vh; padding: 80px 0; }
+             #hero h2 { font-size: 3.8em; }
+             #hero p { font-size: 1.3em; }
+              #hero .btn { padding: 14px 35px; font-size: 1.2em; }
+
+             h2 { font-size: 2.5em; margin-bottom: 30px; }
+              h3 { font-size: 1.7em; }
+              section { padding: 80px 0; }
+               section:before { height: 80px; margin-top: -80px; } /* Header yüksekliğine göre offset */
+
+
+             #why-choose-us .reason-item h3 { font-size: 1.4em; }
+              #hizmetler .service-card h3 { font-size: 1.4em; }
+
+             /* Süreç adımları yataydan dikey geçiş */
+              #surec .process-steps {
+                  grid-template-columns: 1fr; /* Tek kolon */
+                  gap: 50px; /* Adımlar arası dikey boşluk */
+              }
+               #surec .process-step { padding: 25px 20px; }
+              /* Okların dikey konumu */
+               #surec .process-step::before {
+                   content: '\f063'; /* Aşağı Ok ikonu */
+                   top: auto; /* Yatay konum ayarları devre dışı */
+                   bottom: -40px; /* Altına boşluk ve konum */
+                   left: 50%; /* Ortala */
+                   right: auto;
+                   transform: translateX(-50%); /* Yatayda tam ortala */
+                    font-size: 2em;
+               }
+               #surec .process-steps .process-step:last-child::before { display: none; } /* Son adımda ok olmasın */
+
+
+               #ekip .team-member {
+                  flex-direction: column; /* Alt alta sırala */
+                  text-align: center;
+              }
+              #ekip .team-member img {
+                  margin-right: 0;
+                  margin-bottom: 20px; /* Resmin altına boşluk */
+                   width: 140px;
+                   height: 140px;
+              }
+               #ekip .team-member .member-info h3,
+               #ekip .team-member .member-info .role,
+               #ekip .team-member .member-info .description,
+               #ekip .team-member .member-info .skills {
+                  text-align: center; /* Yazıları ortala */
+               }
+
+               #faq .faq-question { font-size: 1em; }
+               #faq .faq-answer { font-size: 0.95em; }
+
+               #iletisim .contact-info p { font-size: 1.1em; }
+               #iletisim form { padding: 30px; }
+        }
+
+        /* Small devices (landscape phones, less than 768px) */
+        @media (max-width: 767.98px) {
+             header nav li { margin: 0 10px; /* Menü aralığı */ }
+
+             #hero { min-height: 60vh; padding: 50px 0; }
+             #hero h2 { font-size: 3em; margin-bottom: 20px; }
+             #hero p { font-size: 1.1em; margin-bottom: 30px;}
+              #hero .btn { padding: 12px 30px; font-size: 1.1em; }
+
+             h2 { font-size: 2.2em; margin-bottom: 25px; padding-bottom: 8px; }
+             h3 { font-size: 1.5em; }
+             section { padding: 60px 0; }
+              section:before { height: 70px; margin-top: -70px; } /* Header yüksekliğine göre offset */
+
+
+            /* Grid elemanları tek kolon */
+             #why-choose-us .reasons-grid,
+             #hizmetler .service-cards,
+              #stats .stats-grid,
+             #referanslar .gallery,
+              #yorumlar .testimonials-slider {
+                 grid-template-columns: 1fr;
+             }
+
+             #why-choose-us .reason-item,
+             #hizmetler .service-card,
+             #surec .process-step,
+              #stats .stat-item, /* İstatistikler de tek kolon */
+             #yorumlar .testimonial-item,
+             #ekip .team-member {
+                 padding: 20px; /* İç boşlukları azalt */
+             }
+
+              #surec .process-step::before { /* Oklar */
+                 bottom: -30px;
+                 font-size: 1.8em;
+              }
+
+              #ekip .team-member img { width: 100px; height: 100px; margin-bottom: 15px; }
+               #ekip .team-member .member-info h3 { font-size: 1.5em; }
+                #ekip .team-member .role { font-size: 1em; }
+                #ekip .team-member .description { font-size: 0.95em; }
+                #ekip .team-member .skills { font-size: 0.9em; }
+
+               #referanslar .gallery img { height: 200px; } /* Resim yüksekliği */
+               #referanslar .gallery .overlay-text { font-size: 1.2em; }
+
+              #faq .faq-question { font-size: 0.95em; padding: 12px 15px; }
+               #faq .faq-answer { padding: 12px 15px; font-size: 0.9em; }
+
+
+              #iletisim form { padding: 25px; }
+              #iletisim form input[type="text"],
+              #iletisim form input[type="email"],
+              #iletisim form input[type="tel"],
+              #iletisim form textarea { width: calc(100% - 20px); padding: 10px; margin-bottom: 15px;}
+               #iletisim form button { padding: 12px; font-size: 1em;}
+               #iletisim .contact-info p { font-size: 1em; }
+        }
+
+        /* Extra small devices (phones, less than 576px) */
+        @media (max-width: 575.98px) {
+            header nav ul { flex-direction: column; align-items: center; } /* Menü alt alta */
+            header nav li { margin: 8px 0; }
+             header h1 { font-size: 2em; }
+
+
+            #hero { min-height: 50vh; padding: 40px 0; }
+            #hero h2 { font-size: 2.2em; margin-bottom: 15px; }
+            #hero p { font-size: 0.9em; margin-bottom: 20px; }
+             #hero .btn { padding: 10px 20px; font-size: 1em; }
+
+            h2 { font-size: 1.8em; margin-bottom: 20px; padding-bottom: 5px; }
+             h3 { font-size: 1.3em; }
+            section { padding: 40px 0; }
+             section:before { height: 60px; margin-top: -60px; } /* Header yüksekliğine göre offset */
+
+            #why-choose-us .reason-item,
+            #hizmetler .service-card,
+             #surec .process-step,
+             #stats .stat-item,
+             #referanslar .gallery .gallery-item,
+             #yorumlar .testimonial-item,
+             #ekip .team-member,
+             #iletisim form {
+                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Daha hafif gölge */
+                  padding: 15px;
+             }
+
+             /* Hover efektlerini kapat (performans/dokunmatik için) */
+             .reason-item:hover,
+             .service-card:hover,
+             .gallery-item:hover,
+             .testimonial-item:hover,
+             .team-member:hover {
+                 transform: none;
+                 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+             }
+              .service-card:hover::before { /* Kart üst çizgi efekti kapatıldı */
+                  height: 5px;
+                  opacity: 1;
+              }
+              .service-card:hover i,
+              .service-card:hover h3,
+              .service-card:hover p {
+                 color: inherit;
+              }
+               .gallery-item:hover::before, /* Galeri overlay kapatıldı */
+               .gallery-item:hover .overlay-text {
+                  opacity: 0;
+               }
+                .gallery img:hover { /* Galeri resim büyüme kapatıldı */
+                   transform: none;
+                   opacity: 1;
+                }
+
+             /* Scroll Animasyonunu kapat */
+             .animate-on-scroll {
+                 opacity: 1;
+                 transform: translateY(0);
+                 transition: none;
+             }
+
+              #surec .process-step::before { /* Oklar */
+                 bottom: -25px; /* Daha yakın */
+                 font-size: 1.5em;
+              }
+
+               #ekip .team-member img { width: 80px; height: 80px; margin-bottom: 10px; }
+               #ekip .team-member .member-info h3 { font-size: 1.3em; }
+                #ekip .team-member .role { font-size: 0.9em; }
+                #ekip .team-member .description { font-size: 0.9em; }
+                #ekip .team-member .skills { font-size: 0.85em; }
+
+               #faq .faq-question { font-size: 0.9em; padding: 10px 12px; }
+               #faq .faq-answer { padding: 10px 12px; font-size: 0.85em; }
+                #faq .faq-question i { margin-left: 5px; }
+
+              #iletisim form input[type="text"],
+              #iletisim form input[type="email"],
+              #iletisim form input[type="tel"],
+              #iletisim form textarea { width: calc(100% - 16px); padding: 8px; margin-bottom: 12px;}
+               #iletisim form button { padding: 10px; font-size: 0.9em;}
+               #iletisim .contact-info p { font-size: 0.95em; margin-bottom: 10px; }
+                #iletisim .contact-info p i { margin-right: 10px; font-size: 1em;}
+
+                #scrollTopBtn { padding: 12px; font-size: 1em; bottom: 15px; right: 15px;}
+
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>KERMELİ İNŞAAT</h1>
+            <nav>
+                <ul>
+                    <li><a href="#hakkimizda">Hakkımızda</a></li>
+                    <li><a href="#why-choose-us">Neden Biz?</a></li>
+                    <li><a href="#hizmetler">Hizmetler</a></li>
+                    <li><a href="#surec">Süreç</a></li>
+                     <li><a href="#stats">Gerçekler</a></li>
+                    <li><a href="#referanslar">Projeler</a></li>
+                    <li><a href="#yorumlar">Yorumlar</a></li>
+                    <li><a href="#ekip">Ekip</a></li>
+                     <li><a href="#faq">SSS</a></li>
+                    <li><a href="#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content animate-on-scroll">
+            <h2>Güvenle İnşa Ediyoruz</h2>
+            <p>KERMELİ İNŞAAT: Tecrübeli Ekip, Kaliteli Malzeme, Zamanında Teslimat.</p>
+            <a href="#iletisim" class="btn animate-on-scroll">Projeniz İçin Ücretsiz Teklif Alın</a>
+        </div>
+    </section>
+
+    <section id="hakkimizda">
+        <div class="container">
+            <h2 class="animate-on-scroll">Hakkımızda</h2>
+            <p class="animate-on-scroll">
+                <strong>KERMELİ İNŞAAT</strong> olarak, inşaat ve tadilat sektöründe uzun yıllara dayanan köklü tecrübemizle, müşterilerimize güvenilir ve kaliteli hizmet sunmayı amaçlıyoruz. Şirket sahibi ve sektörün deneyimli ustası Sayın <strong>İbrahim Kermeli</strong>'nin liderliğinde, her projede detaya önem veren, modern teknikleri geleneksel ustalıkla birleştiren bir anlayışla çalışıyoruz.
+            </p>
+            <p class="animate-on-scroll">
+                Müstakil evlerin kaba ve ince inşaatından, özgün tandır ve barbekü yapımına, her türlü duvar işçiliğinden kapsamlı tadilat ve onarım projelerine kadar geniş bir alanda faaliyet gösteriyoruz. Ekibimizin her üyesi kendi uzmanlık alanında yetenekli ve işine bağlıdır. Projelerinizde şeffaflık, zamanında teslimat ve kaliteli işçilik garantisi veriyoruz. Hayalinizdeki yapıyı gerçeğe dönüştürmek için KERMELİ İNŞAAT olarak buradayız.
+            </p>
+             <p class="animate-on-scroll" style="text-align: center; font-weight: bold; color: var(--primary-color); margin-top: 40px;">
+                KERMELİ İNŞAAT - Sağlam Yarınlar İnşa Ediyoruz.
+            </p>
+        </div>
+    </section>
+
+     <section id="why-choose-us">
+        <div class="container">
+            <h2 class="animate-on-scroll">Neden Bizi Seçmelisiniz?</h2>
+            <p class="animate-on-scroll" style="text-align: center; margin-bottom: 40px; font-size: 1.1em; color: #555;">KERMELİ İNŞAAT farkını deneyimlemeniz için başlıca nedenler:</p>
+            <div class="reasons-grid">
+                <div class="reason-item animate-on-scroll">
+                    <i class="fas fa-award"></i>
+                    <h3>Usta İşçilik Garantisi</h3>
+                    <p>Yılların birikimiyle, işin en ince detayına kadar titizlik ve ustalıkla çalışırız.</p>
+                </div>
+                 <div class="reason-item animate-on-scroll">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Tam Güven</h3>
+                    <p>Şeffaf çalışma prensibimizle, projenizin her adımında size tam güven veririz.</p>
+                </div>
+                 <div class="reason-item animate-on-scroll">
+                    <i class="fas fa-clock"></i>
+                    <h3>Söz Verdiğimiz Zamanda</h3>
+                    <p>Proje takvimine sadık kalır, projelerinizi zamanında tamamlarız.</p>
+                </div>
+                 <div class="reason-item animate-on-scroll">
+                    <i class="fas fa-toolbox"></i>
+                    <h3>Yüksek Kaliteli Malzeme</h3>
+                    <p>Dayanıklı ve uzun ömürlü yapılar için en iyi malzemeleri kullanırız.</p>
+                </div>
+                 <div class="reason-item animate-on-scroll">
+                    <i class="fas fa-comments"></i>
+                    <h3>Açık İletişim</h3>
+                    <p>Sorularınızı her zaman yanıtlar, süreç hakkında sürekli bilgi veririz.</p>
+                </div>
+                 <div class="reason-item animate-on-scroll">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Müşteri Odaklılık</h3>
+                    <p>Sizin memnuniyetiniz ve hayalleriniz bizim için en değerlidir.</p>
+                </div>
+            </div>
+        </div>
+     </section>
+
+    <section id="hizmetler">
+        <div class="container">
+            <h2 class="animate-on-scroll">Hizmetlerimiz</h2>
+             <p class="animate-on-scroll" style="text-align: center; margin-bottom: 40px; font-size: 1.1em; color: #555;">İnşaat, tadilat ve yapı alanında sunduğumuz kapsamlı çözümler:</p>
+            <div class="service-cards">
+                <!-- Her bir hizmet için bir kart -->
+                <div class="service-card animate-on-scroll">
+                     <i class="fas fa-home"></i>
+                    <h3>Müstakil Ev İnşaatı</h3>
+                    <p>Projelendirmeden anahtar teslimine kadar, sağlam ve estetik müstakil evler inşa ediyoruz.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                     <i class="fas fa-fire-alt"></i>
+                    <h3>Tandır & Barbekü Yapımı</h3>
+                    <p>Geleneksel lezzetler ve keyifli anlar için özgün tasarımlı tandır ve barbekü alanları.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                     <i class="fas fa-hard-hat"></i>
+                    <h3>Duvar Örme ve Tamiri</h3>
+                    <p>Tuğla, bims, taş, gazbeton gibi her türlü malzeme ile dayanıklı duvarlar örüyor ve tamir ediyoruz.</p>
+                </div>
+                 <div class="service-card animate-on-scroll">
+                     <i class="fas fa-hammer"></i>
+                    <h3>Kapsamlı Tadilat</h3>
+                    <p>Eski yapılarınızı modern, fonksiyonel ve estetik yaşam alanlarına dönüştürüyoruz.</p>
+                </div>
+                 <div class="service-card animate-on-scroll">
+                     <i class="fas fa-paint-roller"></i>
+                    <h3>Sıva, Boya, Alçıpan</h3>
+                    <p>İç ve dış cephe sıva uygulamaları, alçıpan çözümleri ve profesyonel boya badana hizmetleri.</p>
+                </div>
+                 <div class="service-card animate-on-scroll">
+                     <i class="fas fa-tile"></i>
+                    <h3>Zemin ve Duvar Kaplama</h3>
+                    <p>Seramik, fayans, granit, mermer ve parke gibi tüm zemin ve duvar kaplama işleri.</p>
+                </div>
+                 <div class="service-card animate-on-scroll">
+                     <i class="fas fa-mountain"></i>
+                    <h3>İstinat Duvarları</h3>
+                    <p>Arazi düzenlemesi ve güvenlik için mühendislik hesaplarına uygun istinat duvarları.</p>
+                </div>
+                  <div class="service-card animate-on-scroll">
+                     <i class="fas fa-screwdriver"></i>
+                    <h3>Genel İnşaat ve Onarım</h3>
+                    <p>Temel güçlendirmeden çatı onarımına, her türlü yapısal onarım ve bakım hizmetleri.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <section id="surec">
+        <div class="container">
+            <h2 class="animate-on-scroll">Çalışma Sürecimiz</h2>
+             <p class="animate-on-scroll" style="text-align: center; margin-bottom: 40px; font-size: 1.1em; color: #555;">KERMELİ İNŞAAT ile çalışırken projenizin adımları:</p>
+            <div class="process-steps">
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3>Keşif & Analiz</h3>
+                    <p>Proje alanını detaylı inceler, ihtiyaçlarınızı ve beklentilerinizi dinleriz.</p>
+                </div>
+                 <div class="process-step animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3>Proje & Teklif</h3>
+                    <p>İhtiyaçlarınıza özel çözümler sunar, şeffaf ve detaylı bir teklif hazırlarız.</p>
+                </div>
+                 <div class="process-step animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3>Hazırlık & Başlangıç</h3>
+                    <p>Gerekli planlama ve hazırlıkları tamamlar, projeye başlarız.</p>
+                </div>
+                 <div class="process-step animate-on-scroll">
+                    <div class="step-number">4</div>
+                    <h3>Uygulama & Kontrol</h3>
+                    <p>Usta işçilikle projeyi uygular, her aşamada kalite kontrol yaparız.</p>
+                </div>
+                 <div class="process-step animate-on-scroll">
+                    <div class="step-number">5</div>
+                    <h3>Teslim & Destek</h3>
+                    <p>Projenizi zamanında teslim eder, sonrası için de destek sunarız.</p>
+                </div>
+            </div>
+        </div>
+     </section>
+
+     <section id="stats">
+         <div class="container">
+             <h2 class="animate-on-scroll">Sayısal Gerçekler</h2>
+             <p class="animate-on-scroll" style="text-align: center; margin-bottom: 40px; font-size: 1.1em; color: var(--light-color);">Gurur duyduğumuz başarılarımızdan bazıları:</p>
+             <div class="stats-grid">
+                 <div class="stat-item animate-on-scroll">
+                     <h3>15+</h3> <!-- Örn: 20+ -->
+                     <p>Yıllık Tecrübe</p>
+                 </div>
+                 <div class="stat-item animate-on-scroll">
+                     <h3>885 +</h3> <!-- Örn: 150+ -->
+                     <p>Tamamlanan Proje</p>
+                 </div>
+                  <div class="stat-item animate-on-scroll">
+                     <h3>%95</h3> <!-- Örn: %95 -->
+                     <p>Müşteri Memnuniyeti</p>
+                 </div>
+                  <div class="stat-item animate-on-scroll">
+                     <h3>100 +</h3> <!-- Örn: 50+ -->
+                     <p>Referans Müşteri</p>
+                 </div>
+             </div>
+         </div>
+     </section>
+
+
+    <section id="referanslar">
+        <div class="container">
+            <h2 class="animate-on-scroll">Tamamladığımız Projeler</h2>
+            <p class="animate-on-scroll" style="text-align: center; margin-bottom: 30px; font-size: 1.1em; color: #555;">Kalitemizi ve tecrübemizi yansıtan bazı seçkin projelerimizden kareler:</p>
+            <div class="gallery">
+                <!-- Buraya yaptığınız işlerin fotoğraflarını ekleyin -->
+                <!-- Resim dosyası isimlerini ve alt metinlerini değiştirmeyi unutmayın -->
+                <!-- Lütfen kendi gerçek resimlerinizle değiştirin -->
+                <div class="gallery-item animate-on-scroll">
+                     <img src="images/mustakilev.jpg" alt="Müstakil Ev Projesi">
+                     <div class="overlay-text">Müstakil Ev</div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                     <img src="images/tasduvar.jpg" alt="Taş Duvar Uygulaması">
+                     <div class="overlay-text">Doğal Taş Duvar</div>
+                </div>
+              
+                <div class="gallery-item animate-on-scroll">
+                     <img src="images/betonerme.jpg" alt="Betonarme Temel">
+                     <div class="overlay-text">Sağlam Temel</div>
+                </div>
+             
+                 <div class="gallery-item animate-on-scroll">
+                     <img src="images/images.jpg" alt="Mantolama">
+                     <div class="overlay-text">Dış Cephe Yalıtım</div>
+                </div>
+                 <div class="gallery-item animate-on-scroll">
+                     <img src="images/inşaat.jpg" alt="Tandır Yapımı">
+                     <div class="overlay-text">Geleneksel Tandır</div>
+                </div>
+                 <!-- Daha fazla resim ekleyebilirsiniz -->
+            </div>
+        </div>
+    </section>
+
+     <section id="yorumlar">
+        <div class="container">
+            <h2 class="animate-on-scroll">Müşteri Yorumları</h2>
+            <p class="animate-on-scroll">Bizimle çalışan mutlu müşterilerimizden bazı geri bildirimler:</p>
+            <div class="testimonials-slider">
+                <!-- Her müşteri yorumu için bir item -->
+                <div class="testimonial-item animate-on-scroll">
+                     <i class="fas fa-quote-right"></i>
+                    <p class="quote-text">"KERMELİ İNŞAAT ekibi, evimizin tadilatını beklediğimizden çok daha iyi yaptı. Profesyonel, hızlı ve temiz çalıştılar. İşlerine gerçekten hakimler. Teşekkürler!"</p>
+                    <p class="client-name">Ayşe Yılmaz</p>
+                    <p class="client-title">Ev Sahibi</p>
+                </div>
+                 <div class="testimonial-item animate-on-scroll">
+                     <i class="fas fa-quote-right"></i>
+                    <p class="quote-text">"Bahçemize yaptıkları tandır tam bir sanat eseri oldu. Hem çok kullanışlı hem de görsel olarak harika duruyor. Usta Mahmut'un ellerine sağlık."</p>
+                    <p class="client-name">Mehmet Demir</p>
+                    <p class="client-title">Restoran Sahibi</p>
+                </div>
+                  <div class="testimonial-item animate-on-scroll">
+                     <i class="fas fa-quote-right"></i>
+                    <p class="quote-text">"Müstakil ev projemizde KERMELİ İNŞAAT ile çalıştık. İbrahim Bey ve ekibi süreci çok iyi yönetti. Sağlam, depreme dayanıklı ve istediğimiz gibi bir evimiz oldu."</p>
+                    <p class="client-name">Fatma Kaya</p>
+                    <p class="client-title">Müstakil Ev Sahibi</p>
+                </div>
+                 <!-- Daha fazla yorum ekleyebilirsiniz -->
+            </div>
+        </div>
+     </section>
+
+
+    <section id="ekip">
+        <div class="container">
+            <h2 class="animate-on-scroll">Deneyimli Ekibimiz</h2>
+            <p class="animate-on-scroll" style="text-align: center; margin-bottom: 40px; font-size: 1.1em; color: #555;">Projelerinize değer katan, alanında uzman ve özverili KERMELİ İNŞAAT ekibi:</p>
+            <div class="team-members">
+                <!-- Her ekip üyesi için bir kart -->
+                <div class="team-member animate-on-scroll">
+                     <img src="members/ibrahimusta.PNG" alt="İbrahim Kermeli Fotoğrafı"> <!-- Gerçek fotoğraf placeholder -->
+                    <div class="member-info">
+                        <h3>İbrahim Kermeli</h3>
+                        <p class="role">Şirket Sahibi & Usta Baş</p>
+                        <p class="description">KERMELİ İNŞAAT'ın vizyonunu belirleyen ve her projenin başında bizzat yer alan tecrübeli usta. Kalite kontrol ve proje yönetimi onun işi.</p>
+                        <p class="skills"><strong>Uzmanlık Alanları:</strong> Genel İnşaat Yönetimi, Anahtar Teslim Projeler, Müşteri İlişkileri, Tüm Kaba ve İnce İnşaat Alanları</p>
+                    </div>
+                </div>
+                <div class="team-member animate-on-scroll">
+                    <img src="members/ibo.PNG" alt="İbrahim Kermeli Fotoğrafı"> <!-- Gerçek fotoğraf placeholder -->
+                   <div class="member-info">
+                       <h3>İbrahim Kermeli</h3>
+                       <p class="role">Usta</p>
+                       <p class="description">KERMELİ İNŞAAT'ın vizyonunu belirleyen ve her projenin başında bizzat yer alan tecrübeli usta. Kalite kontrol ve proje yönetimi onun işi.</p>
+                       <p class="skills"><strong>Uzmanlık Alanları:</strong> Duvar örme, Taş taşıma ve yüksek bilgi kalitesi ile inşaata farklı bir bakış açısı getirme.</p>
+                   </div>
+               </div>
+                <div class="team-member animate-on-scroll">
+                     <img src="members/cemil.jpg" alt="Cemil Fotoğrafı"> <!-- Gerçek fotoğraf placeholder -->
+                    <div class="member-info">
+                        <h3>Cemil</h3>
+                        <p class="role">Kaba İnşaat Şefi</p>
+                        <p class="description">Yapıların temelini oluşturan betonarme ve kaba duvar işlerinde uzmandır. Projelerin iskeletinin sağlamlığından sorumludur.</p>
+                        <p class="skills"><strong>Uzmanlık Alanları:</strong> Betonarme Kalıp Sistemleri, Demir Donatı, Beton Dökümü, Kaba Tuğla/Bims Duvar, Perde Duvar</p>
+                    </div>
+                </div>
+                <div class="team-member animate-on-scroll">
+                     <img src="members/cuma.PNG" alt="Cuma Fotoğrafı"> <!-- Gerçek fotoğraf placeholder -->
+                    <div class="member-info">
+                        <h3>Cuma</h3>
+                        <p class="role">Duvar ve Sıva Ustası</p>
+                        <p class="description">Her türlü duvar örme tekniğine hakim. Pürüzsüz sıva işleriyle yüzeyleri ince işlere hazırlar.</p>
+                        <p class="skills"><strong>Uzmanlık Alanları:</strong> Tuğla/Bims/Gazbeton Duvar Örme, Kaba ve İnce Sıva, Alçı Sıva, Mantolama Altı Sıva</p>
+                    </div>
+                </div>
+                <div class="team-member animate-on-scroll">
+                    <img src="members/aziz.jpg" alt="Aziz Fotoğrafı"> <!-- Gerçek fotoğraf placeholder -->
+                    <div class="member-info">
+                         <h3>Aziz</h3>
+                         <p class="role">İnce İşler ve Kaplama Uzmanı</p>
+                         <p class="description">Seramikten parkeye, fayansdan bordüre kadar zemin ve duvar kaplama işlerinde hassas ve estetik çalışır. Mekanlara son dokunuşu katar.</p>
+                         <p class="skills"><strong>Uzmanlık Alanları:</strong> Seramik, Fayans, Granit, Mermer Döşeme, Parke ve Laminat Uygulamaları</p>
+                     </div>
+                </div>
+             
+              
+                 <!-- Daha fazla ekip üyesi ekleyebilirsiniz -->
+            </div>
+        </div>
+    </section>
+
+     <section id="faq">
+        <div class="container">
+            <h2 class="animate-on-scroll">Sıkça Sorulan Sorular</h2>
+            <p class="animate-on-scroll" style="text-align: center; margin-bottom: 40px; font-size: 1.1em; color: #555;">Projeleriniz hakkında merak ettikleriniz:</p>
+            <div class="faq-list">
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        Projelerinizde hangi malzemeleri kullanıyorsunuz?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Projelerimizde TSE ve diğer ilgili standartlara uygun, kalitesi kanıtlanmış, dayanıklı ve çevre dostu malzemeler kullanmaya özen gösteriyoruz. Kullanılacak malzemeler projenin türüne ve bütçeye göre şeffafça belirlenir.
+                    </div>
+                </div>
+                 <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        Keşif hizmetiniz ücretli mi?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Projeniz için yapacağımız ilk keşif ve danışmanlık hizmetimiz ücretsizdir. Yerinde inceleme yaparak size en doğru teklifi sunarız.
+                    </div>
+                </div>
+                 <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        Sadece kaba inşaat veya sadece tadilat işleri yapıyor musunuz?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Evet, KERMELİ İNŞAAT olarak hem anahtar teslim komple projeler hem de sadece kaba inşaat, ince işler, tadilat, onarım gibi belirli aşamalardaki işler için hizmet vermekteyiz. İhtiyacınız ne olursa olsun bizimle iletişime geçebilirsiniz.
+                    </div>
+                </div>
+                 <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        Proje süresi ne kadar sürer?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Proje süresi, yapılacak işin türüne, büyüklüğüne ve detaylarına göre değişiklik gösterir. Keşif sonrası size sunacağımız teklifte, proje için öngörülen yaklaşık süreyi de belirteceğiz. Zamanında teslimat bizim önceliğimizdir.
+                    </div>
+                </div>
+                <!-- Daha fazla SSS ekleyebilirsiniz -->
+            </div>
+        </div>
+     </section>
+
+
+    <section id="iletisim">
+        <div class="container">
+            <h2 class="animate-on-scroll">Bizimle İletişime Geçin</h2>
+             <div class="contact-info animate-on-scroll">
+                <p><i class="fas fa-phone-alt"></i> <strong>Telefon:</strong> <a href="tel:[Telefon Numarası]">+90 533 399 56 98</a></p>
+                <p><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> <a href="https://wa.me/[Telefon Numarası WhatsApp Formatında]" target="_blank">+90 533 399 56 98</a></p>
+                <p><i class="fas fa-envelope"></i> <strong>E-posta:</strong> <a href="mailto:[E-posta Adresi]">kermeliinşaat@gmail.com</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Adres:</strong> Büyükhan Mah. Eyyübiye/Şanlıurfa</p>
+             </div>
+
+            <!-- İletişim Formu -->
+            <form action="#" method="post" class="animate-on-scroll">
+                <h3>Projeniz Hakkında Bilgi ve Ücretsiz Teklif Alın</h3>
+                <label for="adSoyad">Adınız Soyadınız:</label>
+                <input type="text" id="adSoyad" name="adSoyad" required>
+
+                <label for="email">E-posta Adresiniz:</label>
+                <input type="email" id="email" name="email">
+
+                <label for="telefon">Telefon Numaranız:</label>
+                <input type="tel" id="telefon" name="telefon">
+
+                <label for="mesaj">Mesajınız (Projenizi Kısaca Anlatın):</label>
+                <textarea id="mesaj" name="mesaj" required placeholder="Yapmak istediğiniz işin türü (ev, tandır, duvar...), yaklaşık boyutu, konumu ve diğer detayları belirtebilirsiniz..."></textarea>
+
+                <button type="submit">Bilgi Formunu Gönder</button>
+                 <p class="form-note">
+                    Not: Bu form şu anda sadece görsel amaçlıdır ve gönderme işlevi aktif değildir. Gerçek bir form gönderme işlevi için sunucu tarafı kodlama veya <a href="https://formspree.io/" target="_blank">Formspree</a>, <a href="https://getform.io/" target="_blank">Getform</a> gibi harici bir servis kullanmanız gerekir. Lütfen yukarıdaki telefon veya e-posta bilgileri üzerinden doğrudan bizimle iletişime geçin.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 KERMELİ İNŞAAT. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+     <!-- Yukarı Çık Butonu -->
+     <button id="scrollTopBtn" title="Yukarı Çık"><i class="fas fa-chevron-up"></i></button>
+
+
+    <script>
+        // Navigasyon linklerine tıklandığında yumuşak kaydırma
+        document.querySelectorAll('header nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                     const headerHeight = document.querySelector('header').offsetHeight;
+                     // getBoundingClientRect().top + window.pageYOffset, elementin sayfanın en üstüne olan uzaklığıdır.
+                     const targetPosition = window.pageYOffset + targetElement.getBoundingClientRect().top - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Kaydırma sırasında aktif menü öğesini belirleme
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('header nav a');
+        const header = document.querySelector('header');
+
+
+        const setActiveNavLink = () => {
+            let current = '';
+            const headerHeight = header.offsetHeight;
+            // Kaydırma pozisyonuna header yüksekliğini ve biraz daha tolerans ekleyerek offseti düzelt
+            const scrollPosition = window.pageYOffset + headerHeight + 150; // 150px offset
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const sectionId = section.getAttribute('id');
+
+                // Eğer kaydırma pozisyonu bölümün tepesinden büyük veya eşitse VE
+                // kaydırma pozisyonu bölümün tepesi + yüksekliğinden küçükse
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = '#' + sectionId;
+                }
+            });
+
+            // Tüm linklerden 'active' sınıfını kaldır
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Şu anki bölüme ait linke 'active' sınıfını ekle
+            const currentNavLink = document.querySelector(`header nav a[href="${current}"]`);
+            if (currentNavLink) {
+                currentNavLink.classList.add('active');
+            }
+            // İsteğe bağlı: Eğer sayfanın en üstündeysek (hero section), ilk menü linkini (Genelde Hakkımızda) aktif yap
+            else if (window.pageYOffset === 0) {
+                const hakkimizdaLink = document.querySelector('header nav a[href="#hakkimizda"]');
+                 if(hakkimizdaLink) {
+                     hakkimizdaLink.classList.add('active');
+                 }
+            }
+        };
+
+        // Sayfa yüklendiğinde ve her kaydırma olayında aktif linki güncelle
+        window.addEventListener('load', setActiveNavLink);
+        window.addEventListener('scroll', setActiveNavLink);
+
+
+        // Scroll Top Butonu Göster/Gizle ve Tıklama
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+        window.addEventListener('scroll', () => {
+            // Sayfa 400px aşağı kaydırıldığında butonu göster
+            if (window.pageYOffset > 400) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        });
+
+        // Butona tıklayınca sayfayı en üste kaydır
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        // Scroll Animate On Viewport
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+        const checkIsInView = () => {
+            animateElements.forEach(element => {
+                // getBoundingClientRect() elementin viewport'a göre pozisyonunu verir
+                const rect = element.getBoundingClientRect();
+                // %15'i göründüğünde animasyonu başlatmak için offset
+                const viewportHeight = window.innerHeight;
+                const offset = viewportHeight * 0.15;
+
+
+                // Element viewport içinde görünüyor mu? (Offset ile)
+                if (rect.top < viewportHeight - offset && rect.bottom > offset) {
+                    element.classList.add('is-visible');
+                }
+                // İsteğe bağlı: Element viewport dışına çıkınca animasyonu sıfırlamak isterseniz (tekrar girince tekrar oynar)
+                /*
+                else {
+                    element.classList.remove('is-visible');
+                }
+                */
+            });
+        };
+
+        // Sayfa yüklendiğinde ve her scroll olayında kontrol et
+        window.addEventListener('load', () => {
+             checkIsInView(); // Sayfa yüklendiğinde görünür elemanları kontrol et
+             // Küçük ekranlarda (örn. 576px altı) scroll animasyonunu devre dışı bırakmak isterseniz
+             if (window.innerWidth > 575.98) {
+                window.addEventListener('scroll', checkIsInView);
+             }
+        });
+
+
+        // FAQ Accordion Script
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling; // Soruyu takip eden cevap div'i
+
+                // Eğer bu soru zaten açıksa, kapat
+                if (answer.classList.contains('active')) {
+                    answer.classList.remove('active');
+                    question.classList.remove('active');
+                } else {
+                    // Açılacak soru bu değilse, diğerlerini kapat
+                    document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+                        otherAnswer.classList.remove('active');
+                    });
+                    document.querySelectorAll('.faq-question').forEach(otherQuestion => {
+                         otherQuestion.classList.remove('active');
+                    });
+
+                    // Tıklanan soruyu aç
+                    answer.classList.add('active');
+                    question.classList.add('active');
+                }
+            });
+        });
+
+
+        // Not: İletişim formunun gönderilmesi için server tarafı kodlama veya Formspree gibi bir servis gerekir.
+    </script>
+
+</body>
+</html>
